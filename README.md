@@ -41,3 +41,29 @@ All 34 skills from `~/.agents/skills` reviewed — see [INVENTORY.md](./INVENTOR
 Run `/install-gjorgji-skills` first in any repo before using the other engineering skills — it sets up the issue tracker, triage labels, and doc layout they assume.
 
 Packaged as a Claude Code plugin — see [Install](#install) above.
+
+## FAQ
+
+**Can I install just one skill instead of the whole thing?**
+Not through the plugin — `/plugin install` pulls in every skill in the repo. To take one, copy or symlink its `skills/<name>` directory into `~/.claude/skills/<name>` by hand (see [Install](#install)).
+
+**Will this overwrite skills I already have with the same name?**
+`/plugin install` namespaces everything as `/mini-gjorgji:<skill-name>`, so it won't collide with anything in `~/.claude/skills`. Manual copies into `~/.claude/skills` do overwrite same-named directories — check first.
+
+**Do the skills depend on each other?**
+Some do — [INVENTORY.md](./INVENTORY.md) notes it per skill (e.g. `tdd` depends on `codebase-design` and `code-review`; `triage` depends on `grilling` and `domain-modeling`). Installing the whole plugin covers all of them; installing skills one by one, pull in what they depend on too.
+
+**What's `agents/openai.yaml` in each skill directory?**
+A display name and short description for surfacing the same skill in OpenAI's agent builder. Claude Code ignores it entirely — it's there so the skill content works as a tool definition on either platform.
+
+**Do these skills call external services or cost extra tokens beyond normal usage?**
+No network calls beyond what your own prompts already trigger (e.g. `WebFetch`/`WebSearch`, when a skill tells Claude to use them). A skill is a markdown file injected into context when it's invoked, not a separate process.
+
+**How do I get updates after I've already installed?**
+Plugin install: `/plugin update mini-gjorgji`. Manual install: re-copy or re-symlink the changed `skills/<name>` directory.
+
+**How do I remove a skill?**
+Plugin install: `/plugin uninstall mini-gjorgji`. Manual install: delete or unlink `~/.claude/skills/<name>`.
+
+**Why is `skills/` flat instead of grouped by category?**
+Claude Code plugins auto-discover skills as `skills/<name>/SKILL.md` directly under the plugin root — no nested category folders. The categories still exist, just as metadata in [INVENTORY.md](./INVENTORY.md) rather than as directories.
