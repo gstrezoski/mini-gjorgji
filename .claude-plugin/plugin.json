@@ -1,0 +1,10 @@
+{
+  "name": "mini-gjorgji",
+  "version": "1.0.0",
+  "description": "Gjorgji's personal Claude Code skills: engineering workflow, writing, and thinking skills.",
+  "author": {
+    "name": "Gjorgji Strezoski"
+  },
+  "homepage": "https://github.com/gstrezoski/mini-gjorgji",
+  "repository": "https://github.com/gstrezoski/mini-gjorgji"
+}

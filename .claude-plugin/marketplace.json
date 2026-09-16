@@ -1,0 +1,14 @@
+{
+  "name": "mini-gjorgji",
+  "description": "Gjorgji's personal Claude Code skills marketplace.",
+  "owner": {
+    "name": "Gjorgji Strezoski"
+  },
+  "plugins": [
+    {
+      "name": "mini-gjorgji",
+      "source": ".",
+      "description": "Gjorgji's personal Claude Code skills: engineering workflow, writing, and thinking skills."
+    }
+  ]
+}
